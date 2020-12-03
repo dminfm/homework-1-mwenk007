@@ -28,6 +28,8 @@ Use the help menu to explore what the series `gold`, `woolyrnq` and `gas` repres
 ```{r, echo=TRUE, cache=TRUE, eval=FALSE}
 help(gold)
 # to do
+help(woolyrnq)
+help(gas)
 
 ```
 
@@ -35,6 +37,9 @@ Use `autoplot` to plot each of these in separate plots.
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
+autoplot(gold)
+autoplot(woolyrnq)
+autoplot(gas)
 
 ```
 
@@ -43,6 +48,9 @@ Hint: apply the `frequency()` function.
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
+frequency(gold)
+frequency(woolyrnq)
+frequency(gas)
 
 ```
 
@@ -51,6 +59,7 @@ Use `which.max()` to spot the outlier in the `gold` series.
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
+which.max(gold)
 
 ```
 
@@ -75,6 +84,7 @@ Construct time series plots of each of the three series and use 'facets = TRUE' 
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
+autoplot(mytimeseries, facets = TRUE)
 
 ```
 
@@ -82,7 +92,7 @@ Check what happens when you don't include `facets=TRUE`.
 
 ```{r, echo=TRUE, cache=TRUE, dependson="exmyts"}
 # to do
-
+autoplot(mytimeseries)
 ```
 
 # Exercise 3
@@ -100,20 +110,29 @@ The second argument (`skip=1`) is required because the Excel sheet has two heade
 Select one of the time series as follows (but replace the column name with your own chosen column):
 
 ```{r, echo=TRUE, cache=TRUE}
-myts <- ts(retaildata[, "A3349873A"], frequency = 12, start = c(1982, 4))
+myts <- ts(retaildata[, "A3349873A"], frequency = 12, start = c(2000, 5))
 ```
 
 Explore your chosen retail time series using the following functions: `autoplot`, `ggseasonplot`, `ggsubseriesplot`, `gglagplot`, `ggAcf`
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
+autoplot(myts)
+ggseasonplot(myts)
+ggsubseriesplot(myts)
+gglagplot(myts)
+ggAcf(myts)
 
 ```
 
 **Can you spot any seasonality, cyclicity and trend? What do you learn about the series?**
 
 Your answer:
+Saisonal: Während die Werte innerhalb des Jahres nur gering schwanken, ist in den Wintermonaten ein erheblicher Anstieg zu verzeichnen.
 
+Zyklik: Die vorhandene Zyklik kann im Seasonal Plot erkannt werden. Ab November ist ein Ansteig erkennbar.
+
+Trend: Über den gesamten Betrachtungszeitraum ist im Mittelwert ein Anstieg zu erkennen.
 
 # Exercise 4
 Create time plots of the following time series: goog, writing, fancy, a10, h02.
@@ -123,7 +142,15 @@ Create time plots of the following time series: goog, writing, fancy, a10, h02.
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 # to do
+autoplot(goog) + xlab("trading days") + ylab("stock prices") + ggtitle("Daily closing stock prices")
+```
 
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+autoplot(writing)
+autoplot(fancy)
+autoplot(a10)
+autoplot(h02)
 ```
 
 Use the `ggseasonplot` and `ggsubseriesplot` functions to explore the seasonal patterns in the following time series:  `writing`, `fancy`, `a10`, `h02`.
@@ -135,37 +162,55 @@ Use the `ggseasonplot` and `ggsubseriesplot` functions to explore the seasonal p
 ```{r, echo=TRUE}
 # writing
 # to do
+ggseasonplot(writing)
+ggsubseriesplot(writing)
 
 ```
 
-Your answer:
+Your answer: Während die Daten für den Rest des Jahres recht konstant sind, findet von Juli bis September ein Einbruch statt.
+Der Tiefpunkt wird im August erreicht.
+Es gibt keine ungewöhnlichen Jahre.
+
 
 
 ```{r, echo=TRUE}
 # fancy
 # to do
+ggseasonplot(fancy)
+ggsubseriesplot(fancy)
 
 ```
 
 Your answer:#
+Von Anfang bis Ende des Jahres ist ein Anstieg zu erkennen.
+Von November bis Dezember ist der Ansteig am höchsten.
+Der Hochpunkt wird im Dezember erreicht.
+
+1990 ist ein relativ schwaches Jahr.
 
 
 ```{r, echo=TRUE}
 # a10
 # to do
-
+ggseasonplot(a10)
+ggsubseriesplot(a10)
 ```
 
-Your answer:
+Your answer: Der Hochpunkt ist im Januar erreicht. Ab da fällt es stark bis April, um sich bis Ende des Jahres wieder zu erholen.
+
+2008 verhält sich ungewöhnlich. Da ist der März tiefer als der Februar.
 
 
 ```{r, echo=TRUE}
 # h02
 # to do
-
+ggseasonplot(h02)
+ggsubseriesplot(h02)
 ```
 
-Your answer:
+Your answer:Der Hochpunkt ist im Januar erreicht. Ab da fällt es stark bis Februar, um sich bis Ende des Jahres wieder zu erholen.
+
+Eine pinke Kurve(2006?) verhält sich ungewöhnlich. Da ist der April tiefer als der Februar.
 
 
 # Exercise 5
@@ -191,34 +236,61 @@ ggAcf(hsales)
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
-
+autoplot(usdeaths)
+ggseasonplot(usdeaths)
+ggsubseriesplot(usdeaths)
+gglagplot(usdeaths)
+ggAcf(usdeaths)
 ```
 
 Your answer:
++ Seasonality evident in all plots: Hochpunkt im juli, fällt bis Februar, ab da steigt es
++ Cyclicity wird in den ersten beiden Grafiken sichtbar
++ Keine trends
 
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
-
+autoplot(bricksq)
+ggseasonplot(bricksq)
+ggsubseriesplot(bricksq)
+gglagplot(bricksq)
+ggAcf(bricksq)
 ```
 
 Your answer:
++ Seasonality evident in all plots: Von Quartal 1 steigt es bis Quartal 2. Nach Quartal 3 fällt es.
++ Cyclicity wird in den ersten beiden Grafiken sichtbar
++ trend nach oben erkennbar in grafik 1
 
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
-
+autoplot(sunspotarea)
+#ggseasonplot(sunspotarea)
+ggsubseriesplot(sunspotarea)
+gglagplot(sunspotarea)
+ggAcf(sunspotarea)
 ```
 
-Your answer:
+Your answer: Daten sind nicht saisonal
+kein trend
+Zyklic gut erkennbar.
 
 
 ```{r, echo=TRUE, cache=TRUE}
 # to do
-
+autoplot(gasoline)
+ggseasonplot(gasoline)
+#ggsubseriesplot(gasoline)
+gglagplot(gasoline)
+ggAcf(gasoline)
 ```
 
 Your answer:
+trend nach oben erkennbar in grafik 1
+saisonalität: im winter höher als im sommer
+zyklik eher unkonstant
 
 
 # Exercise 6
@@ -239,10 +311,21 @@ ggAcf(y)
 
 ```{r, echo=TRUE, cache=TRUE}
 # todo
-
+mypigs <- window(pigs, start=1990)
+autoplot(mypigs)
+autoplot(y)
+ggAcf(mypigs)
+ggAcf(y)
 ```
 
 Your answer:
+
+Ein Muster im Zeitplot ist kaum erkennbar.
+Das ACF zeigt eine signifikante Autokorrelation an den Stellen 1,2 und 3
+r 12 zeigt eine leichte Saisonalität.
+Das Ergebnis ist kein white noise.
+
+
 
 
 # Exercise 7
@@ -251,8 +334,16 @@ Your answer:
 
 ```{r}
 # todo
-
+ddj <- diff(dj)
+autoplot(ddj)
+autoplot(y)
+ggAcf(ddj)
+ggAcf(y)
 ```
 
-Your answer:
+Your answer: Im Zeitplot kann kaum ein Muster erkannt werden. Die Volatilität ist relativ hoch.
+Das ACF zeigt keine signifikante Autokorrelation.
+An der Stelle r6 wird die untere Grenze knapp unterschritten. Dies ist aber nicht signifikant.
+
+Das Ergebnis scheint ein white noise zu sein..
 
