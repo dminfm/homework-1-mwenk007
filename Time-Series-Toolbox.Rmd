@@ -1,6 +1,6 @@
 ---
 title: "Homework 1 - Time Series Toolbox"
-author: "Prof. Dr. Stephan Trahasch"
+author: "Prof. Dr. Michael Wenk"
 date: 'Submission date: 17.12.2020'
 output:
   html_document:
